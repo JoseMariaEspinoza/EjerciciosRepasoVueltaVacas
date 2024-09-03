@@ -30,14 +30,15 @@ public class Banco {
         System.out.println("Introduzca el importe a ingresar");
         double cantidad = entrada.nextDouble();
         cuentamov.ingresar(cantidad);
-        cuentamov.setMovimientos(movimientos.ad(new Movimientos("Ingreso", LocalDateTime.now(),cantidad)));
-
+        cuentamov.movimientos.add(new Movimientos("Ingreso", LocalDateTime.now(),cantidad));
     }
     private static void extraer(){
         System.out.println("Introduzca el importe a retirar");
-        cuentamov.extraer(entrada.nextDouble());
+        double cantidad = entrada.nextDouble();
+        cuentamov.extraer(cantidad);
+        cuentamov.movimientos.add(new Movimientos("Retirada", LocalDateTime.now(),cantidad));
     }
      private static void mostrarMovimientos(){
-         System.out.println(cuentamov.toString());
+         System.out.println(cuentamov.obtenerMovimientos());
      }
 }
